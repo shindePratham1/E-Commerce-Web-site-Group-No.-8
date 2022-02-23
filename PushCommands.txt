@@ -1,0 +1,6 @@
+git push commands-
+git status
+git remote -v
+git remote add origin https://github.com/shindePratham1/E-Commerce-Web-site-Group-No.-8.git
+git branch -M master
+git push -u origin master
