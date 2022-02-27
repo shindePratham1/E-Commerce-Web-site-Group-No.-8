@@ -1,0 +1,113 @@
+customer_table ::::
+
+create table customer_table (
+customer_id int not null,
+customer_firstName varchar(20) not null,
+customer_lastName varchar(20) not null,
+customer_userName varchar(20) not null,
+customer_password varchar(20) not null,
+customer_address varchar(20) not null,
+customer_mobileNo varchar(20) not null unique,
+customer_email varchar(20) not null unique,
+customer_city varchar(20) not null,
+customer_pincode int not null,
+primary key(customer_id)
+);
+****************************************************
+vendor_table  ::::::::
+create table vendor_table(
+vendor_id int not null,
+vendor_firstName varchar(20) not null,
+vendor_lastName varchar(20) not null,
+vendor_userName varchar(20) not null,
+vendor_shopName varchar(20) not null,
+vendor_mobileNo varchar(20) not null,
+vendor_address varchar(20) not null,
+vendor_password varchar(20) not null,
+vendor_email varchar(20) not null unique,
+vendor_licenseNo varchar(20) not null unique,
+vendor_adharCard varchar(20) not null unique,
+vendor_userName varchar(20) not null,
+primary key(vendor_id)
+);
+**************************************************
+product_table ::::::
+
+create table product_table(
+product_id int not null,
+product_name varchar(20) not null,
+product_category varchar(20) not null,
+product_pricePerQuantity varchar(20) not null,
+product_quantity varchar(20) not null,
+product_description varchar(50) not null,
+product_image varchar(20) not null,
+primary key(product_id)
+);
+**************************************************
+orders_table ::::::
+create table orders_table(
+orders_id int not null,
+customer_id int not null,
+orders_status varchar(20) not null,
+orders_totalCost int not null,
+orders_date date not null,
+payment_status varchar(20) not null,
+order_product_id int not null,
+primary key(orders_id),
+foreign key(customer_id) reference(customer_table),
+foreign key(ordered_product_id) reference(ordered_product_table)
+);
+*****************************************************************
+
+ordered_product_table :::::::::
+
+create table ordered_product_table(
+ordered_product_id int not null,
+product_id int not null,
+product_quantity int not null,
+product_cost int not null,
+primary key(ordered_product_id)
+foreign key(product_id) reference(product_table)
+);
+**************************************************************
+delivery_boy :::::::::::
+
+create table delivery_boy(
+delivery_boy_id int not null,
+delivery_boy_firstName varchar(20) not null,
+delivery_boy_lastName varchar(20) not null,
+delivery_boy_userName varchar(20) not null,
+delivery_boy_password varchar(20) not null,
+delivery_boy_mobileNo varchar(20) not null,
+delivery_boy_address varchar(20) not null,
+orders_id int not null ,
+primary key(delivery_boy_id),
+foreign key(orders_id) reference(orders_table)
+);
+*******************************************************
+feedback_table :::::::
+create table feedback_table(
+feedback_id int not null ,
+ordered_product_id int not null,
+customer_id int not null,
+feedback_in_rating(check constraint 0-5) int,
+feedback_in_comment varchar(100) ,
+feedback_date date not null,
+feedback_time (....) not null,
+foreign key(ordered_product_id) reference(ordered_product_table),
+foreign key(customer_id) reference (customer_table)
+);
+**************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
