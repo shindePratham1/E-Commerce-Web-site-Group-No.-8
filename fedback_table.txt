@@ -1,0 +1,193 @@
+CREATE TABLE `reviews` (
+  `review_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` mediumint(8) unsigned NOT NULL,
+  `product_type` enum('page','pdf') NOT NULL,
+  `rating` tinyint(1) unsigned NOT NULL,
+  `review` mediumtext NOT NULL,
+  `reviewer_name` varchar(60) NOT NULL,
+  `reviewer_email` varchar(60) NOT NULL,
+  `review_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`review_id`),
+  KEY `review_date` (`review_date`),
+  KEY `product` (`product_id`,`product_type`)
+);
+
+mysql> create table Fedback ( Feedback_Id NOT NULL AUTO_INCREMENT, 
+                              feedback_msg varchar(300),
+							  date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);PRIMARY KEY (Feedback_Id),FOREIGN KEY (cust_ID) REFERENCES Persons(PersonID));
+mysql> insert into test (str) values ("demo");
+CREATE TABLE feedback (
+    Personid int NOT NULL AUTO_INCREMENT,
+    Feedbak_msg varchar(255) NOT NULL,
+    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Personid)
+);
+
+
+
+mysql> create table test (str varchar(32), ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc test;
++-------+-------------+------+-----+-------------------+-------+
+| Field | Type        | Null | Key | Default           | Extra |
++-------+-------------+------+-----+-------------------+-------+
+| str   | varchar(32) | YES  |     | NULL              |       | 
+| ts    | timestamp   | NO   |     | CURRENT_TIMESTAMP |       | 
++-------+-------------+------+-----+-------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into test (str) values ("demo");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from test;
++------+---------------------+
+| str  | ts                  |
++------+---------------------+
+| demo | 2008-10-03 22:59:52 | 
++------+---------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> insert into feedback values(default,"dd");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>  insert into feedback (Feedbak_msg) values ("demo");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> table feedback;
++----------+-------------+---------------------+
+| Personid | Feedbak_msg | ts                  |
++----------+-------------+---------------------+
+|        1 | demo        | 2022-02-27 03:59:47 |
++----------+-------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>  insert into feedback (Feedbak_msg) values ("sescond");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> table feedback;
++----------+-------------+---------------------+
+| Personid | Feedbak_msg | ts                  |
++----------+-------------+---------------------+
+|        1 | demo        | 2022-02-27 03:59:47 |
+|        2 | sescond     | 2022-02-27 04:00:30 |
++----------+-------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql>  insert into feedback (Feedbak_msg) values ("thirds");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> table feedback;
++----------+-------------+---------------------+
+| Personid | Feedbak_msg | ts                  |
++----------+-------------+---------------------+
+|        1 | demo        | 2022-02-27 03:59:47 |
+|        2 | sescond     | 2022-02-27 04:00:30 |
+|        3 | thirds      | 2022-02-27 04:00:51 |
++----------+-------------+---------------------+
+3 rows in set (0.00 sec)
+
+**********************************************************************
+CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL CHECK (AGE >= 18),
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),       
+   PRIMARY KEY (ID)
+);
+
+CREATE TABLE person1 (
+    ID int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int NOT NULL CHECK (AGE >= 18),
+	
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
+
+********************************************
+
+ALTER TABLE votes ADD UNIQUE unique_index(user, email, address);
+
+create table test (str varchar(32), ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+
+CREATE TABLE delivery_boy1 (
+    delivery_boy_id int NOT NULL AUTO_INCREMENT,
+    delivery_boy_firstName varchar(255) NOT NULL,
+    delivery_boy_lastName varchar(255) NOT NULL,
+	delivery_boy_mobileNo int(15) NOT NULL ,
+    delivery_boy_address varchar(255) NOT NULL,
+	delivery_boy_city  varchar(255) NOT NULL,
+	delivery_boy_pincode int (10),
+	delivery_boy_email varchar(255) NOT NULL,
+    delivery_boy_age  int  NOT NULL CHECK (AGE >= 18),
+    PRIMARY KEY (delivery_boy_id)
+	
+);
+CONSTRAINT UC_delivary_boy UNIQUE (delivery_boy_mobile_no,delivery_boy_email)
+
+delivery_boy_id
+delivery_boy_firstName
+delivery_boy_lastName
+delivery_boy_userName
+delivery_boy_password
+delivery_boy_mobileNo
+delivery_boy_address
+delivery_boy_city
+delivery_boy_pincode
+orders_id
+$##################################################
+CREATE TABLE delivery_boy1 (
+    delivery_boy_id int NOT NULL AUTO_INCREMENT,
+    delivery_boy_firstName varchar(255) NOT NULL,
+    delivery_boy_lastName varchar(255) NOT NULL,
+	delivery_boy_mobile_no varchar(12) NOT NULL ,
+    delivery_boy_address varchar(255) NOT NULL,
+	delivery_boy_city  varchar(255) NOT NULL,
+	delivery_boy_pincode int (10),
+	delivery_boy_email varchar(255) NOT NULL,
+    delivery_boy_age  int  NOT NULL CHECK (delivery_boy_age >= 18),
+	PRIMARY KEY (delivery_boy_id),
+	CONSTRAINT UC_delivary_boy UNIQUE (delivery_boy_mobile_no,delivery_boy_email)
+
+);
+
+insert into delivery_boy values(default,
+"swapnil",
+"shinde",
+96573366564,
+"ApManglwedha",
+"Manglwedha",
+413319,
+"swapnil@gmail.com"
+,22);
+############################################################################
+
+CREATE TABLE delivery_boy1 (
+    delivery_boy_id int NOT NULL AUTO_INCREMENT,
+    delivery_boy_firstName varchar(255) NOT NULL,
+    delivery_boy_lastName varchar(255) NOT NULL,
+	delivery_boy_mobile_no varchar(12) NOT NULL ,
+    delivery_boy_address varchar(255) NOT NULL,
+	delivery_boy_city  varchar(255) NOT NULL,
+	delivery_boy_pincode int (10),
+	delivery_boy_email varchar(255) NOT NULL,
+    delivery_boy_age  int  NOT NULL CHECK (delivery_boy_age >= 18),
+	PRIMARY KEY (delivery_boy_id)
+	
+);
+
+ALTER TABLE delivery_boy1 ADD UNIQUE unique_index(delivery_boy_mobile_no, delivery_boy_email);
+ALTER TABLE delivery_boy1 ADD UNIQUE unique_index( delivery_boy_email);
+
+insert into delivery_boy1 values(default,
+"swapnil",
+"shinde",
+9657336656,
+"ApManglwedha",
+"Manglwedha",
+413319,
+"swapnil@gmail.com"
+,22);
