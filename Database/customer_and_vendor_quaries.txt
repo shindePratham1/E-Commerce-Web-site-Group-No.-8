@@ -1,0 +1,65 @@
+mysql> create table vendor_table( vendor_id int NOT NULL AUTO_INCREMENT, 
+								  vendor_firstName varchar(15) NOT NULL, 
+								  vendor_lastName varchar(15) NOT NULL,
+								  vendor_shopName varchar(25), 
+								  vendor_licenseNo varchar(15), 
+								  vendor_adharCard varchar(15), 
+								  vendor_username varchar(10) NOT NULL, 
+								  vendor_password varchar(10) NOT NULL, 
+								  vendor_address varchar(25) NOT NULL, 
+								  vendor_mobilNo varchar(10) NOT NULL,
+								  vendor_email varchar(25) NOT NULL UNIQUE, 
+								  vendor_city varchar(20) NOT NULL, 
+								  vendor_pincode varchar(10) NOT NULL, 
+								  PRIMARY KEY(vendor_id));
+
+mysql> desc customer_table;
++--------------------+-------------+------+-----+---------+----------------+
+| Field              | Type        | Null | Key | Default | Extra          |
++--------------------+-------------+------+-----+---------+----------------+
+| customer_id        | int         | NO   | PRI | NULL    | auto_increment |
+| customer_firstName | varchar(15) | NO   |     | NULL    |                |
+| customer_lastName  | varchar(15) | NO   |     | NULL    |                |
+| customer_username  | varchar(10) | NO   |     | NULL    |                |
+| customer_password  | varchar(10) | NO   |     | NULL    |                |
+| customer_address   | varchar(25) | NO   |     | NULL    |                |
+| customer_mobilNo   | varchar(10) | NO   |     | NULL    |                |
+| customer_email     | varchar(25) | NO   | UNI | NULL    |                |
+| customer_city      | varchar(20) | NO   |     | NULL    |                |
+| customer_pincode   | varchar(10) | NO   |     | NULL    |                |
++--------------------+-------------+------+-----+---------+----------------+
+
+mysql> create table vendor_table( vendor_id int NOT NULL AUTO_INCREMENT, 
+							vendor_firstName varchar(15) NOT NULL, 
+							vendor_lastName varchar(15) NOT NULL,
+							vendor_shopName varchar(25) NOT NULL, 
+							vendor_licenseNo varchar(15) NOT NULL, 
+							vendor_adharCard varchar(15) NOT NULL, 
+							vendor_username varchar(10) NOT NULL, 
+							vendor_password varchar(10) NOT NULL, 
+							vendor_address varchar(25) NOT NULL, 
+							vendor_mobilNo varchar(10) NOT NULL,
+							vendor_email varchar(25) NOT NULL UNIQUE, 
+							vendor_city varchar(20) NOT NULL, 
+							vendor_pincode varchar(10) NOT NULL, 
+							PRIMARY KEY(vendor_id));
+							
+mysql> desc vendor_table;							
++------------------+-------------+------+-----+---------+----------------+
+| Field            | Type        | Null | Key | Default | Extra          |
++------------------+-------------+------+-----+---------+----------------+
+| vendor_id        | int         | NO   | PRI | NULL    | auto_increment |
+| vendor_firstName | varchar(15) | NO   |     | NULL    |                |
+| vendor_lastName  | varchar(15) | NO   |     | NULL    |                |
+| vendor_shopName  | varchar(25) | NO   |     | NULL    |                |
+| vendor_licenseNo | varchar(15) | NO   |     | NULL    |                |
+| vendor_adharCard | varchar(15) | NO   |     | NULL    |                |
+| vendor_username  | varchar(10) | NO   |     | NULL    |                |
+| vendor_password  | varchar(10) | NO   |     | NULL    |                |
+| vendor_address   | varchar(25) | NO   |     | NULL    |                |
+| vendor_mobilNo   | varchar(10) | NO   |     | NULL    |                |
+| vendor_email     | varchar(25) | NO   | UNI | NULL    |                |
+| vendor_city      | varchar(20) | NO   |     | NULL    |                |
+| vendor_pincode   | varchar(10) | NO   |     | NULL    |                |
++------------------+-------------+------+-----+---------+----------------+
+13 rows in set (0.05 sec)
