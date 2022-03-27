@@ -1,0 +1,93 @@
+use project;
+show tables;
+select * from customer1;
+
+CREATE TABLE delivery_boy (
+    delivery_boy_id int NOT NULL AUTO_INCREMENT,
+    delivery_boy_firstName varchar(255) NOT NULL,
+    delivery_boy_lastName varchar(255) NOT NULL,
+	delivery_boy_mobile_no varchar(12) NOT NULL ,
+    delivery_boy_address varchar(255) NOT NULL,
+	delivery_boy_city  varchar(255) NOT NULL,
+	delivery_boy_pincode int (10),
+	delivery_boy_email varchar(255) NOT NULL,
+    delivery_boy_age  int  NOT NULL CHECK (delivery_boy_age >= 18),
+	PRIMARY KEY (delivery_boy_id),
+	CONSTRAINT UC_delivary_boy UNIQUE (delivery_boy_mobile_no)
+);
+insert into delivery_boy values(default,
+"swapnil",
+"shinde",
+9657336656,
+"ApManglwedha",
+"Manglwedha",
+413319,
+"swapnil@gmail.com"
+,22);
+select * from delivery_boy;
+desc delivery_boy;
+
+create table vendor(              vendor_id int NOT NULL AUTO_INCREMENT, 
+								  vendor_firstName varchar(100) NOT NULL, 
+								  vendor_lastName varchar(100) NOT NULL,
+								  vendor_shopName varchar(100) NOT NULL, 
+								  vendor_licenseNo varchar(100) NOT NULL, 
+								  vendor_adharCard varchar(100) NOT NULL, 
+								  vendor_username varchar(100) NOT NULL, 
+								  vendor_password varchar(100) NOT NULL, 
+								  vendor_address varchar(100) NOT NULL, 
+								  vendor_mobilNo varchar(100) NOT NULL,
+								  vendor_email varchar(100) NOT NULL UNIQUE, 
+								  vendor_city varchar(100) NOT NULL, 
+								  vendor_pincode varchar(100) NOT NULL, 
+								  PRIMARY KEY(vendor_id));
+
+ desc vendor;
+ 
+ insert into vendor values(
+default,
+"swapnil",
+"shinde",
+"SSS",
+965733,
+965733665622,
+"swapnil",
+"swapnil@123",
+"Ap Manglwedha",
+9657336656,
+"swapnil@gmail.com",
+"pune",
+401046
+);
+
+select * from vendor;
+
+
+
+
+create table customer (
+customer_id int not null AUTO_INCREMENT,
+customer_firstName varchar(250) not null,
+customer_lastName varchar(250) not null,
+customer_userName varchar(250) not null,
+customer_password varchar(250) not null,
+customer_address varchar(250) not null,
+customer_mobileNo varchar(250) not null unique,
+customer_email varchar(250) not null ,
+customer_city varchar(250) not null,
+customer_pincode int not null,
+primary key(customer_id)
+);
+
+insert into customer values(
+default,
+"swapnil",
+"shinde",
+"swapnil",
+"swapnil@123",
+"Ap Manglwedha",
+9657336656,
+"swapnil@gmail.com",
+"pune",
+401046
+);
