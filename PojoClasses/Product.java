@@ -3,10 +3,15 @@ package com.example.demo.entity;
 
 
 
+import java.util.Arrays;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -32,25 +37,13 @@ public class Product {
 	@NotEmpty
 	private String product_desc;
 	
+	@Lob
 	@NotEmpty
-	private String  product_image;
+	private byte[]  product_image;
 	
-	public Product() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Product(int product_id, String product_name, String product_category, int product_pricePerQuantity,
-			int product_quantity, String product_desc, String product_image) {
-		super();
-		this.product_id = product_id;
-		this.product_name = product_name;
-		this.product_category = product_category;
-		this.product_pricePerQuantity = product_pricePerQuantity;
-		this.product_quantity = product_quantity;
-		this.product_desc = product_desc;
-		this.product_image = product_image;
-	}
+	@ManyToOne
+	@JoinColumn(name="vendor_id")
+	private Vendor vendor;
 
 	public int getProduct_id() {
 		return product_id;
@@ -100,12 +93,46 @@ public class Product {
 		this.product_desc = product_desc;
 	}
 
-	public String getProduct_image() {
+	public byte[] getProduct_image() {
 		return product_image;
 	}
 
-	public void setProduct_image(String product_image) {
+	public void setProduct_image(byte[] product_image) {
 		this.product_image = product_image;
+	}
+
+	public Vendor getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
+	}
+
+	public Product(int product_id, @NotEmpty String product_name, @NotEmpty String product_category,
+			@NotEmpty int product_pricePerQuantity, @NotEmpty int product_quantity, @NotEmpty String product_desc,
+			@NotEmpty byte[] product_image, Vendor vendor) {
+		super();
+		this.product_id = product_id;
+		this.product_name = product_name;
+		this.product_category = product_category;
+		this.product_pricePerQuantity = product_pricePerQuantity;
+		this.product_quantity = product_quantity;
+		this.product_desc = product_desc;
+		this.product_image = product_image;
+		this.vendor = vendor;
+	}
+
+	public Product() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Product [product_id=" + product_id + ", product_name=" + product_name + ", product_category="
+				+ product_category + ", product_pricePerQuantity=" + product_pricePerQuantity + ", product_quantity="
+				+ product_quantity + ", product_desc=" + product_desc + ", product_image="
+				+ Arrays.toString(product_image) + ", vendor=" + vendor + "]";
 	}
 
 	

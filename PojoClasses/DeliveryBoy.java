@@ -2,11 +2,14 @@ package com.example.demo.entity;
 
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -45,15 +48,94 @@ public class DeliveryBoy {
 	@NotEmpty
 	private int  delivery_boy_pincode;
 	
-	private int  orders_id;
-	
-	
-	public DeliveryBoy() {
-		
+	@OneToMany(mappedBy = "orders")
+	private List<Orders> OrdersList;
+
+	public int getDelivery_boy_id() {
+		return delivery_boy_id;
 	}
-	public DeliveryBoy(int delivery_boy_id, String delivery_boy_firstName, String delivery_boy_lastName,
-			String delivery_boy_userName, String delivery_boy_password, String delivery_boy_mobileNo,
-			String delivery_boy_address, String delivery_boy_city, int delivery_boy_pincode, int orders_id) {
+
+	public void setDelivery_boy_id(int delivery_boy_id) {
+		this.delivery_boy_id = delivery_boy_id;
+	}
+
+	public String getDelivery_boy_firstName() {
+		return delivery_boy_firstName;
+	}
+
+	public void setDelivery_boy_firstName(String delivery_boy_firstName) {
+		this.delivery_boy_firstName = delivery_boy_firstName;
+	}
+
+	public String getDelivery_boy_lastName() {
+		return delivery_boy_lastName;
+	}
+
+	public void setDelivery_boy_lastName(String delivery_boy_lastName) {
+		this.delivery_boy_lastName = delivery_boy_lastName;
+	}
+
+	public String getDelivery_boy_userName() {
+		return delivery_boy_userName;
+	}
+
+	public void setDelivery_boy_userName(String delivery_boy_userName) {
+		this.delivery_boy_userName = delivery_boy_userName;
+	}
+
+	public String getDelivery_boy_password() {
+		return delivery_boy_password;
+	}
+
+	public void setDelivery_boy_password(String delivery_boy_password) {
+		this.delivery_boy_password = delivery_boy_password;
+	}
+
+	public String getDelivery_boy_mobileNo() {
+		return delivery_boy_mobileNo;
+	}
+
+	public void setDelivery_boy_mobileNo(String delivery_boy_mobileNo) {
+		this.delivery_boy_mobileNo = delivery_boy_mobileNo;
+	}
+
+	public String getDelivery_boy_address() {
+		return delivery_boy_address;
+	}
+
+	public void setDelivery_boy_address(String delivery_boy_address) {
+		this.delivery_boy_address = delivery_boy_address;
+	}
+
+	public String getDelivery_boy_city() {
+		return delivery_boy_city;
+	}
+
+	public void setDelivery_boy_city(String delivery_boy_city) {
+		this.delivery_boy_city = delivery_boy_city;
+	}
+
+	public int getDelivery_boy_pincode() {
+		return delivery_boy_pincode;
+	}
+
+	public void setDelivery_boy_pincode(int delivery_boy_pincode) {
+		this.delivery_boy_pincode = delivery_boy_pincode;
+	}
+
+	public List<Orders> getOrdersList() {
+		return OrdersList;
+	}
+
+	public void setOrdersList(List<Orders> ordersList) {
+		OrdersList = ordersList;
+	}
+
+	public DeliveryBoy(int delivery_boy_id, @NotEmpty String delivery_boy_firstName,
+			@NotEmpty String delivery_boy_lastName, @NotEmpty String delivery_boy_userName,
+			@NotEmpty @Size(min = 8) String delivery_boy_password,
+			@Pattern(regexp = "^[0-9]{10}$") String delivery_boy_mobileNo, @NotEmpty String delivery_boy_address,
+			@NotEmpty String delivery_boy_city, @NotEmpty int delivery_boy_pincode, List<Orders> ordersList) {
 		super();
 		this.delivery_boy_id = delivery_boy_id;
 		this.delivery_boy_firstName = delivery_boy_firstName;
@@ -64,69 +146,24 @@ public class DeliveryBoy {
 		this.delivery_boy_address = delivery_boy_address;
 		this.delivery_boy_city = delivery_boy_city;
 		this.delivery_boy_pincode = delivery_boy_pincode;
-		this.orders_id = orders_id;
-	}
-	public int getDelivery_boy_id() {
-		return delivery_boy_id;
-	}
-	public void setDelivery_boy_id(int delivery_boy_id) {
-		this.delivery_boy_id = delivery_boy_id;
-	}
-	public String getDelivery_boy_firstName() {
-		return delivery_boy_firstName;
-	}
-	public void setDelivery_boy_firstName(String delivery_boy_firstName) {
-		this.delivery_boy_firstName = delivery_boy_firstName;
-	}
-	public String getDelivery_boy_lastName() {
-		return delivery_boy_lastName;
-	}
-	public void setDelivery_boy_lastName(String delivery_boy_lastName) {
-		this.delivery_boy_lastName = delivery_boy_lastName;
-	}
-	public String getDelivery_boy_userName() {
-		return delivery_boy_userName;
-	}
-	public void setDelivery_boy_userName(String delivery_boy_userName) {
-		this.delivery_boy_userName = delivery_boy_userName;
-	}
-	public String getDelivery_boy_password() {
-		return delivery_boy_password;
-	}
-	public void setDelivery_boy_password(String delivery_boy_password) {
-		this.delivery_boy_password = delivery_boy_password;
-	}
-	public String getDelivery_boy_mobileNo() {
-		return delivery_boy_mobileNo;
-	}
-	public void setDelivery_boy_mobileNo(String delivery_boy_mobileNo) {
-		this.delivery_boy_mobileNo = delivery_boy_mobileNo;
-	}
-	public String getDelivery_boy_address() {
-		return delivery_boy_address;
-	}
-	public void setDelivery_boy_address(String delivery_boy_address) {
-		this.delivery_boy_address = delivery_boy_address;
-	}
-	public String getDelivery_boy_city() {
-		return delivery_boy_city;
-	}
-	public void setDelivery_boy_city(String delivery_boy_city) {
-		this.delivery_boy_city = delivery_boy_city;
-	}
-	public int getDelivery_boy_pincode() {
-		return delivery_boy_pincode;
-	}
-	public void setDelivery_boy_pincode(int delivery_boy_pincode) {
-		this.delivery_boy_pincode = delivery_boy_pincode;
-	}
-	public int getOrders_id() {
-		return orders_id;
-	}
-	public void setOrders_id(int orders_id) {
-		this.orders_id = orders_id;
+		OrdersList = ordersList;
 	}
 
+	public DeliveryBoy() {
+		super();
+	}
 
+	@Override
+	public String toString() {
+		return "DeliveryBoy [delivery_boy_id=" + delivery_boy_id + ", delivery_boy_firstName=" + delivery_boy_firstName
+				+ ", delivery_boy_lastName=" + delivery_boy_lastName + ", delivery_boy_userName="
+				+ delivery_boy_userName + ", delivery_boy_password=" + delivery_boy_password
+				+ ", delivery_boy_mobileNo=" + delivery_boy_mobileNo + ", delivery_boy_address=" + delivery_boy_address
+				+ ", delivery_boy_city=" + delivery_boy_city + ", delivery_boy_pincode=" + delivery_boy_pincode
+				+ ", OrdersList=" + OrdersList + "]";
+	}
+	
+	
+	
 
 }

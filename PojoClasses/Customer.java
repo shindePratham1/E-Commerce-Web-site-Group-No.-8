@@ -1,10 +1,13 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -20,36 +23,41 @@ public class Customer {
 	private int	customer_id ;
 	
 	@NotEmpty
-	private String	customer_firstName ;
+	private String customer_firstName ;
 	
 	@NotEmpty
-	private String	customer_lastname ;
+	private String customer_lastname ;
 	
 	@NotEmpty
-	private String	customer_username ;
+	private String customer_username ;
 	
 	@NotEmpty
 	@Size(min = 8)
-	private String	customer_password ;
+	private String customer_password ;
 	
 	@NotEmpty
-	private String	customer_address ;
+	private String customer_address ;
 	
 	@Pattern(regexp="^[0-9]{10}$")
 	@Column(unique = true)
-	private String	customer_mob_no ;
+	private String customer_mob_no ;
 	
 	@NotEmpty
 	@Email	//it will make sure the entered input is email only
 	@Column(unique = true)
-	private String	customer_email ;
+	private String customer_email ;
 	
 	@NotEmpty
-	private String	customer_city ;
+	private String customer_city ;
 	
 	@NotEmpty
-	private long	customer_pincode ;
+	private long customer_pincode ;
 	
+	@OneToMany(mappedBy = "cust")
+	private List<Feedback> feedbackList;
+	
+	@OneToMany(mappedBy = "Orders")
+	private List<Orders> ordersList;
 	
 	
 	public int getCustomer_id() {
