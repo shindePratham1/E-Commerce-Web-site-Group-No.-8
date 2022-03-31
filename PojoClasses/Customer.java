@@ -116,7 +116,7 @@ public class Customer {
 	public Customer(int customer_id, String customer_firstName, String customer_lastname, String customer_username,
 			String customer_password, String customer_address, String customer_mob_no, String customer_email,
 			String customer_city, long customer_pincode) {
-		super();
+		
 		this.customer_id = customer_id;
 		this.customer_firstName = customer_firstName;
 		this.customer_lastname = customer_lastname;
@@ -128,7 +128,7 @@ public class Customer {
 		this.customer_city = customer_city;
 		this.customer_pincode = customer_pincode;
 	}
-	
+      //without parametrized constuctor
 	public Customer() {
 		
 	}
